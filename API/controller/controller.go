@@ -12,7 +12,8 @@ import (
 // Criar Atividade
 func PostAtividade(c echo.Context) error {
 	db := database.DBConnection()
-	strAtividade := new(model.Atividade)
+
+	strAtividade := model.Atividade{}
 	err := c.Bind(&strAtividade)
 	if err != nil {
 		return c.JSON(400, err)
@@ -75,9 +76,22 @@ func GetListaParam(c echo.Context) error {
 	return c.JSON(http.StatusOK, response)
 }
 
-// Atualiza atividade com id de parametro
+// Atualiza atividade
 func PutAtualiza(c echo.Context) error {
-	return nil
+	db := database.DBConnection()
+	strAtividade := model.Atividade{}
+	err := c.Bind(&strAtividade)
+	if err != nil {
+		return c.JSON(400, err)
+	}
+
+	sql := "UPDATE tb_atividades SET atividade_titulo = ?, atividade_subtitulo = ?, atividade_descricao = ?, atividade_situacao = ? WHERE id = ?"
+	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Situacao, strAtividade.Id)
+	if err != nil {
+		fmt.Print(err.Error())
+	}
+
+	return c.JSON(http.StatusOK, result)
 }
 
 // Deleta Atividade
