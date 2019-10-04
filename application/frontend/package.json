@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "babel-plugin-transform-imports": "1.5.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "postcss-rtl": "^1.2.3",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",

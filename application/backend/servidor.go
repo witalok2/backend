@@ -25,13 +25,13 @@ func main() {
 	// Criar Atividade
 	e.POST("/atividade/criar", controller.PostAtividade)
 	// Lista todas atividades do Usuario
-	e.GET("/atividade/lista", controller.GetLista)
+	e.GET("/atividade/listar", controller.GetLista)
 	// Lista as atividades passado pelo ID
-	e.GET("/atividade/lista/:id", controller.GetListaParam)
+	e.GET("/atividade/listar/:id", controller.GetListaParam)
 	// Atualiza Atividade
 	e.PUT("/atividade/atualizar/:id", controller.PutAtualiza)
 	// Exluir Atividade
-	e.DELETE("/atividade/excluir/:id", controller.Delete)
+	e.DELETE("/atividade/deletar/:id", controller.Delete)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":1323"))
