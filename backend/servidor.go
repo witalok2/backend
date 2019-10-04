@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
-	"github.com/witalok2/API/controller"
+	"github.com/witalok2/backend/controller"
 )
 
 func main() {

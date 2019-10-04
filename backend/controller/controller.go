@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/witalok2/API/database"
-	"github.com/witalok2/API/model"
+	"github.com/witalok2/backend/database"
+	"github.com/witalok2/backend/model"
 )
 
 // Criar Atividade
