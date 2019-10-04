@@ -1,0 +1,280 @@
+<div class="q-pa-md">
+      <div class="row">
+        
+        <div class="col"> <!-- Colua Pendentes -->
+          <h6 id="text-colunas"> Pendente </h6>
+          <!-- Coluna Pendente -->
+          <div id="cards-coluna-pendentes">
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-purple text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-purple text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-purple text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card>
+          </div><!-- Fim card coluna pendente-->
+        </div> <!-- Fim coluna pendente -->
+        
+        <div class="col"> <!-- Coluna Em Andamanto  -->
+          <h6 id="text-colunas"> Em Andamento </h6>
+          <!-- Coluna Andamento -->
+          <div id="cards-coluna-andamento">
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-brown-5 text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-brown-5 text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+          </div><!-- Fim card coluna Andameto-->
+        </div> <!-- Fim Coluna em Andamento-->
+        
+        <div class="col"> <!-- Coluna Finalizadas -->
+          <h6 id="text-colunas"> Finalizadas </h6>
+          <!-- Coluna Finalizada -->
+          <div id="cards-coluna-finalizadas">
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-secondary text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-secondary text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+            <!-- Cards de atividades -->
+            <q-card class="my-card bg-secondary text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+             <!-- Cards de atividades -->
+            <q-card class="my-card bg-secondary text-white">
+              <q-card-section>
+                <div class="text-h6">{{  titulo }}</div>
+                <q-separator dark inset/>
+                <div class="descricao">{{ subTitulo }}</div>
+              </q-card-section>
+
+              <q-card-section>
+                {{ msg }}
+              </q-card-section>
+
+              <q-separator dark />
+
+              <q-card-actions>
+              </q-card-actions>
+            </q-card><br>
+
+          </div><!-- Fim card coluna pendente-->
+
+        </div> <!-- Fim coluna Finalizadas -->
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    data () {
+    return {
+      titulo:     'API - Pagamento',
+      subTitulo:  'Meio de Pagamento',
+      msg:      'Inserir Botão de pagamento na plataforma',
+      curtidas: 3,
+
+      loading2: false,
+      percentagem: 0,
+    }
+  },
+
+  methods: {
+    startComputing (id) {
+      this[`loading${id}`] = true
+      this[`percentagem${id}`] = 0
+      this[`interval${id}`] = setInterval(() => {
+        this[`percentagem${id}`] += Math.floor(Math.random() * 8 + 10)
+        if (this[`percentagem${id}`] >= 100) {
+          clearInterval(this[`interval${id}`])
+          this[`loading${id}`] = false
+        }
+      }, 700)
+    }
+  },
+
+  beforeDestroy () {
+    clearInterval(this.interval1)
+    clearInterval(this.interval2)
+  }
+
+
+
+
+
+  <style>
+.home {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  color: #2c3e50;
+
+}
+
+/* Cards de Atividades */
+.my-card {
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.text-h6 { /* titulo */
+  text-align: center;
+}
+
+.descricao {
+  text-align: center;
+  color: #ccc;
+}
+
+#cards-coluna-pendentes {
+  text-align: center;
+}
+#cards-coluna-andamento {
+  text-align: center;
+}
+#cards-coluna-finalizadas  {
+  text-align: center;
+  opacity: 0.5;
+}
+
+#text-colunas  {
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+#text-painel  {
+  opacity: 0.2;
+  font-size: 50px;
+}
+</style>
