@@ -24,6 +24,16 @@ import {
   QAvatar,
   QChip,
   QMarkupTable,
+  QTable,
+  QTh,
+  QTr,
+  QTd,
+  QCard,
+  QCardSection,
+  QCardActions,
+  QDialog,
+  ClosePopup,
+  QInput
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -45,8 +55,18 @@ Vue.use(Quasar, {
     QAvatar,
     QChip,
     QMarkupTable,
+    QTable,
+    QTh,
+    QTr,
+    QTd,
+    QCard,
+    QCardSection,
+    QCardActions,
+    QDialog,
+    QInput,
   },
   directives: {
+    ClosePopup
   },
   plugins: {
   },
