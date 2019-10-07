@@ -34,6 +34,6 @@ func main() {
 	e.DELETE("/atividade/deletar/:id", controller.Delete)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":1324"))
 	defer e.Close()
 }
