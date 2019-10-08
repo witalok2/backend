@@ -12,10 +12,6 @@ export default {
   name: 'home',
   data () {
     return {
-      titulo:     'API - Pagamento',
-      subTitulo:  'Meio de Pagamento',
-      msg:      'Inserir Botão de pagamento na plataforma'
-
     }
   }
 }

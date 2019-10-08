@@ -33,11 +33,20 @@ import {
   QCardActions,
   QDialog,
   ClosePopup,
-  QInput
+  QInput,
+  QBadge,
+  Notify,
+  QFab,
+  QFabAction
 } from 'quasar'
 
 Vue.use(Quasar, {
-  config: {},
+  plugins: {
+    Notify
+  },
+  config: {
+    notify: { /* Notify defaults */ }
+  },
   components: {
     QLayout,
     QHeader,
@@ -64,11 +73,12 @@ Vue.use(Quasar, {
     QCardActions,
     QDialog,
     QInput,
+    QBadge,
+    QFab,
+    QFabAction
   },
   directives: {
     ClosePopup
-  },
-  plugins: {
   },
   lang: lang
  })

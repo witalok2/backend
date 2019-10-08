@@ -3,30 +3,7 @@
     <div id="text-painel">
       TODAS AS ATIVIDADES
     </div>
-     
-    <div class="q-pa-md">
-      <q-markup-table flat bordered>
-        <thead class="bg-teal">
-          <tr>
-            <th class="text-left">Titulo</th>
-            <th class="text-left">Subtitulo</th>
-            <th class="text-left">Descrição</th>
-            <th class="text-left">Situação</th>
-          </tr>
-        </thead>
-        <tbody class="bg-grey-3">
-          <tr v-for="(lista, index) in listaAll" :key="index">
-            <td class="text-left">{{ lista.titulo }}</td>
-            <td class="text-left">{{ lista.subtitulo }}</td>
-            <td class="text-left">{{ lista.descricao }}</td>
-            <td class="text-left">{{ lista.situacao }}</td>
-          </tr>
-        </tbody>
-      </q-markup-table>
-    </div>
-    
 
-    
    <q-dialog v-model="infoAt" full-height>
         <q-card class="column full-height" style="width: 800px" >
           <q-card-section>
@@ -38,7 +15,7 @@
           </q-card-section>
 
           <q-card-actions align="right" class="bg-white text-teal">
-            <q-btn flat label="Criar" v-close-popup />
+            <q-btn flat label="Iniciar" v-close-popup />
             <q-btn flat label="Fechar" v-close-popup />
           </q-card-actions>
         </q-card>
@@ -49,8 +26,9 @@
       <div class="col" id="coluna-pendentes">
         <h6 id="text-colunas"> Pendente </h6>
             <!-- Cards de atividades -->
-            <q-card class="my-card bg-purple text-white" v-for="(lista, index) in filteListaPendente" :key="index">
+            <q-card class="my-card bg-secondary text-white" v-for="(lista, index) in filteListaPendente" :key="index">
               <q-card-section>
+                <q-badge color="red">#{{ lista.id }}</q-badge>
                 <div class="text-h6">{{ lista.titulo }}</div>
                  <q-separator />
                 <div class="descricao">{{ lista.subtitulo }}</div>
@@ -63,10 +41,8 @@
               <q-separator dark />
 
               <q-card-actions>
-          
-              <q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
+                <q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
               </q-card-actions>
-
             </q-card><br>
       </div>
 
@@ -75,6 +51,7 @@
             <!-- Cards de atividades -->
             <q-card class="my-card bg-purple text-white" v-for="(lista, index) in filteListaAndamento" :key="index">
               <q-card-section>
+                <q-badge color="red">#{{ lista.id }}</q-badge>
                 <div class="text-h6">{{ lista.titulo }}</div>
                  <q-separator />
                 <div class="descricao">{{ lista.subtitulo }}</div>
@@ -87,8 +64,7 @@
               <q-separator dark />
 
               <q-card-actions>
-          
-<q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
+                <q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
               </q-card-actions>
 
             </q-card><br>
@@ -97,8 +73,9 @@
       <div class="col" id="coluna-finalizada">
         <h6 id="text-colunas"> Finalizada </h6>
             <!-- Cards de atividades -->
-            <q-card class="my-card bg-purple text-white" v-for="(lista, index) in filteListaFinalizada" :key="index">
+            <q-card class="my-card bg-brown-5 text-white" v-for="(lista, index) in filteListaFinalizada" :key="index">
               <q-card-section>
+                <q-badge color="red">#{{ lista.id }}</q-badge>
                 <div class="text-h6">{{ lista.titulo }}</div>
                  <q-separator />
                 <div class="descricao">{{ lista.subtitulo }}</div>
@@ -111,8 +88,7 @@
               <q-separator dark />
 
               <q-card-actions>
-          
-              <q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
+                <q-btn round color="deep-orange" icon="edit_location" @click="infoAt = true"/>
               </q-card-actions>
 
             </q-card><br>      
@@ -135,10 +111,16 @@ export default {
       searchP:'Pendente',
       searchA:'Em Andamento',
       searchF:'Finalizada',
-      text: '',
     } 
   },
+
+  mounted(){
+    this.listar()
+  },
+  
   computed: {
+    
+    // Refatorar esse filtro que esta triplicado.... 
     filteListaPendente:function(){
       return this.listaAll.filter((lista) => {
         return lista.situacao.match(this.searchP)
@@ -150,16 +132,18 @@ export default {
         return lista.situacao.match(this.searchA)
         })
       },
-
   
-  filteListaFinalizada:function(){
+    filteListaFinalizada:function(){
       return this.listaAll.filter((lista) => {
         return lista.situacao.match(this.searchF)
         })
       },
   },
-   mounted(){
-    Atividades.lista().then(response => { this.listaAll = response.data.atividades }) 
+
+  methods:{
+    listar(){
+      Atividades.listar().then(response => { this.listaAll = response.data.atividades })
+    }
   },
 }
 
@@ -176,7 +160,7 @@ export default {
   opacity: 0.2;
   font-size: 80px;
   text-align: center;
-  margin-bottom: 30px;
+  
 }
 
 #tabela {

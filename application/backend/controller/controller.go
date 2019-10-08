@@ -22,6 +22,7 @@ func PostAtividade(c echo.Context) error {
 	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Situacao)
 	if err != nil {
 		fmt.Print(err.Error())
+		return c.JSON(400, err)
 	}
 
 	id, err := result.LastInsertId()
@@ -37,7 +38,7 @@ func GetLista(c echo.Context) error {
 	sqlStatement := "SELECT id,	atividade_titulo, atividade_subtitulo, atividade_descricao, atividade_situacao FROM tb_atividades order by id"
 	rows, err := db.Query(sqlStatement)
 	if err != nil {
-		fmt.Println(err)
+		return c.JSON(400, err)
 	}
 
 	defer rows.Close()
@@ -45,10 +46,10 @@ func GetLista(c echo.Context) error {
 
 	for rows.Next() {
 		atividade := model.Atividade{}
-		err2 := rows.Scan(&atividade.Id, &atividade.Titulo, &atividade.SubTitulo, &atividade.Descricao, &atividade.Situacao)
+		err := rows.Scan(&atividade.Id, &atividade.Titulo, &atividade.SubTitulo, &atividade.Descricao, &atividade.Situacao)
 		// Exit if we get an error
-		if err2 != nil {
-			return err2
+		if err != nil {
+			return c.JSON(400, err)
 		}
 		result.Atividades = append(result.Atividades, atividade)
 	}
@@ -70,6 +71,7 @@ func GetListaParam(c echo.Context) error {
 
 	if err != nil {
 		fmt.Println(err)
+		return c.JSON(400, err)
 	}
 
 	response := model.Atividade{Id: id, Titulo: titulo, SubTitulo: subTitulo, Descricao: descricao, Situacao: situacao}
@@ -89,6 +91,7 @@ func PutAtualiza(c echo.Context) error {
 	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Situacao, strAtividade.Id)
 	if err != nil {
 		fmt.Print(err.Error())
+		return c.JSON(400, err)
 	}
 
 	return c.JSON(http.StatusOK, result)
@@ -103,11 +106,12 @@ func Delete(c echo.Context) error {
 	stmt, err := db.Prepare(sql)
 	if err != nil {
 		fmt.Println(err)
+		return c.JSON(400, err)
 	}
 
 	result, err2 := stmt.Exec(requested_id)
 	if err2 != nil {
-		panic(err2)
+		return c.JSON(400, err)
 	}
 
 	fmt.Println(result.RowsAffected())

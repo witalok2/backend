@@ -6,29 +6,31 @@
           <q-toolbar-title>
               <div id="titulo">Todo List</div>
           </q-toolbar-title>
-          <q-btn push color="white" text-color="primary" label="+" @click="createAt = true"/>
+          <q-btn push color="white" text-color="primary" label="Criar" @click="createAt = true"/>
         </q-toolbar>
       </q-header>
 
       <q-dialog v-model="createAt" full-height>
         <q-card class="column full-height" style="width: 800px" >
           <q-card-section>
-            <div class="text-h6">Informações da Atividade</div>
-          </q-card-section>
-            <div id="inputTitulo">
-              <q-input v-model="text" label="Titulo"/>
-              <q-input v-model="text" label="SubTitulo"/>
-              <q-input square outlined v-model="text" label="Square outlined" />
-            </div>
-          <q-card-section class="col">
-        
+            <div class="text-h6">Criação de Atividade</div>
           </q-card-section>
 
+          <!-- formulario com os inputs de criação de atividades -->
+          <form>
+            <div id="inputTitulo">
+                <q-input v-model="atividade.titulo" label="Titulo" />
+                <q-input v-model="atividade.subtitulo" label="Subtitulo"/>
+                <q-input v-model="atividade.descricao" filled type="textarea" placeholder="Descrição da Atividade"/>
+            </div>
+          </form>
+
           <q-card-actions align="right" class="bg-white text-teal">
-            <q-btn flat label="Criar" v-close-popup />
-            <q-btn flat label="Fechar" v-close-popup />
+            <q-btn v-on:click="salvar" flat label="Salvar" v-close-popup />
+            <q-btn  flat label="Fechar" v-close-popup />
           </q-card-actions>
         </q-card>
+
       </q-dialog>
 
       <q-page-container>
@@ -41,16 +43,57 @@
 
 <script>
 //Imports
+import Atividades from './services/atividades'
 
 export default {
   name: 'app',
   data () {
     return {
-      nomeUser: 'Witalo Matheus ',
       createAt: false,
+
+      // Dados dos inputs
+      atividade:{
+        titulo: '',
+        subtitulo: '',
+        descricao: '',
+        situacao: 'Pendente'
+      },
+      atividades: [],
+      errors: []
+
+    }
+  },
+
+  methods:{
+    //Função insert de Atividade
+    salvar(){
+        Atividades.salvar(this.atividade).then(resposta => { 
+          this.atividade = {}
+          this.errors = {}
+          this.createNotify()
+        }).catch(e => {
+          this.errors = e.response.data.errors
+        })
+      }, 
+
+    // Notificação de Sucesso na criação de Atividade
+    createNotify() {
+      this.$q.notify({
+        message: 'Atividade Criada Com Sucesso.',
+        color: 'green'
+      })  
+    },
+
+    // Notificação de Erro na criação de Atividade
+    erroNotify() {
+      this.$q.notify({
+        message: 'Erro na Criação da Atividade.',
+        color: 'red'
+      })  
     }
   }
 }
+
 </script>
 
 
@@ -68,6 +111,9 @@ export default {
   background-color: white;
 }
 
-
+#inputTitulo {
+  margin-left: 20px;
+  margin-right: 40px;
+}
 
 </style>
