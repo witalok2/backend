@@ -75,7 +75,7 @@ Vue.use(Quasar, {
     QInput,
     QBadge,
     QFab,
-    QFabAction
+    QFabAction,
   },
   directives: {
     ClosePopup

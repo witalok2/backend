@@ -10,8 +10,8 @@
         </q-toolbar>
       </q-header>
 
-      <q-dialog v-model="createAt" full-height>
-        <q-card class="column full-height" style="width: 800px" >
+      <q-dialog v-model="createAt">
+        <q-card style="width: 700px; max-width: 80vw;">
           <q-card-section>
             <div class="text-h6">Criação de Atividade</div>
           </q-card-section>
@@ -109,11 +109,14 @@ export default {
 
 .q-toolbar{
   background-color: white;
+  text-align: center;
+  color: #2c3e50;
 }
 
 #inputTitulo {
   margin-left: 20px;
   margin-right: 40px;
+
 }
 
 </style>
