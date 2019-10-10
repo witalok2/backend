@@ -3,6 +3,7 @@
     <div id="text-painel">
       Painel de Atividades
     </div>
+  
   </div>
 </template>
 
@@ -18,7 +19,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .home {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

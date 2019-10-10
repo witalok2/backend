@@ -37,7 +37,7 @@ import {
   QBadge,
   Notify,
   QFab,
-  QFabAction
+  QFabAction,
 } from 'quasar'
 
 Vue.use(Quasar, {

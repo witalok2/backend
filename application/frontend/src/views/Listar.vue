@@ -119,10 +119,7 @@ export default {
       listaAlls: [],
       infoAtPen: false,
       infoAtEnd: false,
-      searchP: "Pendente",
-      searchA: "Em Andamento",
-      searchF: "Finalizada",
-      params_id: "",
+      searchP: "Pendente", searchA: "Em Andamento", searchF: "Finalizada",
       all: {}
     };
   },

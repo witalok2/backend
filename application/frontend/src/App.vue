@@ -6,7 +6,9 @@
           <q-toolbar-title>
               <div id="titulo">Todo List</div>
           </q-toolbar-title>
-          <q-btn push color="white" text-color="primary" label="Criar" @click="createAt = true"/>
+          <q-btn id="btnHead" push color="white" text-color="primary" label="Criar" @click="createAt = true"/>
+          <q-btn id="btnHead" push color="white" text-color="primary" label="Editar" @click="createAt = true"/>
+          <q-btn id="btnHead" push color="white" text-color="primary" label="Excluir" @click="createAt = true"/>
         </q-toolbar>
       </q-header>
 
@@ -116,7 +118,10 @@ export default {
 #inputTitulo {
   margin-left: 20px;
   margin-right: 40px;
+}
 
+#btnHead {
+  margin-left: 10px;
 }
 
 </style>
