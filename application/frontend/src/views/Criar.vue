@@ -1,14 +1,14 @@
 <template>
 <div>
   <div id="text-painel">CRIAR ATIVIDADE</div> <!-- Titulo -->
-  <form>
-  <q-page padding>
-    <q-input outlined v-model="atividade.titulo" label="Titulo" /><br> <!-- Input com o titulo da atividade -->
-    <q-input outlined v-model="atividade.subtitulo" label="SubTitulo" /><br> <!-- input com o subtitulo da atividade -->
-    <q-input v-model="atividade.descricao" filled type="textarea" label="Descrição"/> <!-- Text area  -->
-    <q-btn color="white" text-color="black" label="Criar"  v-on:click="Create" />
-  </q-page>
-  </form>
+    <form>
+    <q-page padding >
+      <q-input outlined v-model="atividade.titulo" label="Titulo" /><br> <!-- Input com o titulo da atividade -->
+      <q-input outlined v-model="atividade.subtitulo" label="SubTitulo" /><br> <!-- input com o subtitulo da atividade -->
+      <q-input v-model="atividade.descricao" filled type="textarea" label="Descrição"/> <!-- Text area  --> <br/>
+      <q-btn color="white" text-color="black" label="Criar"  v-on:click="Create" />
+    </q-page>
+    </form>
 </div>
 </template>
 
@@ -58,5 +58,9 @@ export default {
   opacity: 0.5;
   font-size: 30px;
   text-align: center;
+}
+
+#formInputs {
+  background-color: #0000;
 }
 </style>

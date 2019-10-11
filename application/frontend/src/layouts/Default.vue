@@ -25,7 +25,7 @@
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="inbox" />
+                <q-icon name="today" />
               </q-item-section>
 
               <q-item-section>
@@ -33,9 +33,9 @@
               </q-item-section>
             </q-item>
 
-            <q-item active clickable v-ripple>
+            <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="star" />
+                <q-icon name="list" />
               </q-item-section>
 
               <q-item-section>
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+//imports
+import MenuIcon from 'vue-material-design-icons/Menu.vue';
 
 export default {
   name: 'LayoutDefault',

@@ -27,7 +27,7 @@
     <q-card
       flat
       bordered
-      class="my-card bg-grey-1"
+      class="my-card bg-grey-3"
       v-for="(atividade, index) of atividades"
       :key="index"
     >
@@ -179,7 +179,7 @@ export default {
 }
 
 #btnEditar {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #formEdicao {
