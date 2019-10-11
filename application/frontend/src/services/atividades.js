@@ -14,6 +14,6 @@ export default {
   },
     
 	apagar:(atividade)=>{
-		return http.delete('deletar/:id', { data: atividade })
+		return http.delete('deletar/' + atividade);
   }
 }

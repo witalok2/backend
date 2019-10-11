@@ -9,7 +9,7 @@
             <div class="text-titulo">{{ atividade.titulo }}</div>
             <div class="text-subtitulo">{{ atividade.subtitulo }}</div>
             <div class="text-descricao">{{ atividade.descricao }}</div>
-            <div class="text-situacao">{{ atividade.situacao }}</div>
+            <div class="text-situacao"><q-btn @click="deletar(atividade.id)"  outline rounded color="red" label="Excluir" /></div>
           </div>
         </div>
       </q-card-section>
@@ -39,6 +39,8 @@ export default {
       },
       atividades: [],
       errors: []
+      
+      
     }
   },
 
@@ -55,6 +57,15 @@ export default {
       Atividades.listar().then(response => {
         this.atividades = response.data.atividades;
       });
+    },
+
+    deletar(id){
+      Atividades.apagar(id).then(resposta => {
+          alert(id)
+          this.listar()
+        }).catch(e => {
+          this.errors = e.response.data.errors
+        })
     }
   }
 }
