@@ -57,15 +57,12 @@
   </div>
 </template>
 
-<style>
-</style>
-
 <script>
 //Imports
 import Atividades from "../services/atividades";
 
 export default {
-  name: "PageHome",
+  name: "lista",
 
   data() {
     return {
@@ -90,14 +87,13 @@ export default {
 
   methods: {
     List() {
-      Atividades.list().then(response => {
+      Atividades.ativity().then(response => {
         this.atividades = response.data.atividades;
       });
     },
 
     Delete(id) {
-      Atividades.apagar(id)
-        .then(resposta => {
+      Atividades.apagar(id).then(resposta => {
           this.deleteNotify();
           this.List();
         })

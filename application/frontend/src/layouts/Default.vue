@@ -25,6 +25,16 @@
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
+                <q-icon name="dashboard" />
+              </q-item-section>
+
+              <q-item-section>
+                <router-link to="/" style="text-decoration:none;">Home</router-link>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
                 <q-icon name="today" />
               </q-item-section>
 
@@ -39,7 +49,7 @@
               </q-item-section>
 
               <q-item-section>
-                <router-link to="/" style="text-decoration:none;">Atividades</router-link>
+                <router-link to="/lista" style="text-decoration:none;">Atividades</router-link>
               </q-item-section>
             </q-item>
           

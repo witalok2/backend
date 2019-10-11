@@ -9,7 +9,7 @@ export default {
 		return http.put('atualizar/', atividade);
   },
 
-  list:()=>{
+  ativity:()=>{
 		return http.get('listar')
   },
     
