@@ -1,15 +1,15 @@
 import { http } from './config'
 
 export default {
-  salvar:(atividade)=>{
+  create:(atividade)=>{
 		return http.post('criar', atividade);
   },
     
-	atualizar:(atividade)=>{
-		return http.put('atualizar/:id', atividade);
+	update:(atividade)=>{
+		return http.put('atualizar/', atividade);
   },
 
-  listar:()=>{
+  list:()=>{
 		return http.get('listar')
   },
     

@@ -1,12 +1,12 @@
 <template>
 <div>
-  <div id="text-painel">CRIAR ATIVIDADES</div> <!-- Titulo -->
+  <div id="text-painel">CRIAR ATIVIDADE</div> <!-- Titulo -->
   <form>
   <q-page padding>
-    <q-input v-model="atividade.titulo" label="Titulo" /><br> <!-- Input com o titulo da atividade -->
-    <q-input v-model="atividade.subtitulo" label="SubTitulo" /><br> <!-- input com o subtitulo da atividade -->
+    <q-input outlined v-model="atividade.titulo" label="Titulo" /><br> <!-- Input com o titulo da atividade -->
+    <q-input outlined v-model="atividade.subtitulo" label="SubTitulo" /><br> <!-- input com o subtitulo da atividade -->
     <q-input v-model="atividade.descricao" filled type="textarea" label="Descrição"/> <!-- Text area  -->
-    <q-btn color="white" text-color="black" label="Criar"  v-on:click="salvar" />
+    <q-btn color="white" text-color="black" label="Criar"  v-on:click="Create" />
   </q-page>
   </form>
 </div>
@@ -23,8 +23,7 @@ export default {
       atividade:{
         titulo: '',
         subtitulo: '',
-        descricao: '',
-        situacao:'Pendente',
+        descricao: ''
       },
       atividades: [],
       errors: []
@@ -33,8 +32,8 @@ export default {
 
   methods:{
     //Função insert de Atividade
-    salvar(){
-        Atividades.salvar(this.atividade).then(resposta => { 
+    Create(){
+        Atividades.create(this.atividade).then(resposta => { 
           this.atividade = {}
           this.errors = {}
           this.createNotify()

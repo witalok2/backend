@@ -29,7 +29,7 @@
               </q-item-section>
 
               <q-item-section>
-                <router-link to="/criar">Criar Atividades</router-link>
+                <router-link to="/criar" style="text-decoration:none;">Criar</router-link>
               </q-item-section>
             </q-item>
 
@@ -39,31 +39,10 @@
               </q-item-section>
 
               <q-item-section>
-                <router-link to="/">Todas Atividades</router-link>
+                <router-link to="/" style="text-decoration:none;">Atividades</router-link>
               </q-item-section>
             </q-item>
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="send" />
-              </q-item-section>
-
-              <q-item-section>
-                Editar Atividade
-              </q-item-section>
-            </q-item>
-
-            <q-separator />
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
-
-              <q-item-section>
-                Deletar Atividade
-              </q-item-section>
-            </q-item>
+          
           </q-list>
         </q-scroll-area>
       </q-drawer>

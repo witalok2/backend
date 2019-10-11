@@ -5,7 +5,6 @@ type Atividade struct {
 	Titulo    string `json:"titulo" db:"atividade_titulo"`
 	SubTitulo string `json:"subtitulo" db:"atividade_subtitulo"`
 	Descricao string `json:"descricao" db:"atividade_descricao"`
-	Situacao  string `json:"situacao" db:"atividade_situacao"` // Pendente, Em Andamento, Finalizadas
 }
 
 type Atividades struct {

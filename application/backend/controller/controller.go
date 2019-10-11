@@ -18,8 +18,8 @@ func PostAtividade(c echo.Context) error {
 	if err != nil {
 		return c.JSON(400, err)
 	}
-	sql := "INSERT INTO tb_atividades(atividade_titulo, atividade_subtitulo, atividade_descricao, atividade_situacao) VALUES( ?, ?, ?,?)"
-	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Situacao)
+	sql := "INSERT INTO tb_atividades(atividade_titulo, atividade_subtitulo, atividade_descricao) VALUES( ?, ?, ?)"
+	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao)
 	if err != nil {
 		fmt.Print(err.Error())
 		return c.JSON(400, err)
@@ -35,7 +35,7 @@ func PostAtividade(c echo.Context) error {
 // Lista todas atividades do Usuario
 func GetLista(c echo.Context) error {
 	db := database.DBConnection()
-	sqlStatement := "SELECT id,	atividade_titulo, atividade_subtitulo, atividade_descricao, atividade_situacao FROM tb_atividades order by id"
+	sqlStatement := "SELECT id,	atividade_titulo, atividade_subtitulo, atividade_descricao FROM tb_atividades order by id"
 	rows, err := db.Query(sqlStatement)
 	if err != nil {
 		return c.JSON(400, err)
@@ -46,7 +46,7 @@ func GetLista(c echo.Context) error {
 
 	for rows.Next() {
 		atividade := model.Atividade{}
-		err := rows.Scan(&atividade.Id, &atividade.Titulo, &atividade.SubTitulo, &atividade.Descricao, &atividade.Situacao)
+		err := rows.Scan(&atividade.Id, &atividade.Titulo, &atividade.SubTitulo, &atividade.Descricao)
 		// Exit if we get an error
 		if err != nil {
 			return c.JSON(400, err)
@@ -65,16 +65,15 @@ func GetListaParam(c echo.Context) error {
 	var titulo string
 	var subTitulo string
 	var descricao string
-	var situacao string
 
-	err := db.QueryRow("SELECT id, atividade_titulo, atividade_subtitulo, atividade_descricao, atividade_situacao FROM tb_atividades WHERE id = ?", requested_id).Scan(&id, &titulo, &subTitulo, &descricao, &situacao)
+	err := db.QueryRow("SELECT id, atividade_titulo, atividade_subtitulo, atividade_descricao FROM tb_atividades WHERE id = ?", requested_id).Scan(&id, &titulo, &subTitulo, &descricao)
 
 	if err != nil {
 		fmt.Println(err)
 		return c.JSON(400, err)
 	}
 
-	response := model.Atividade{Id: id, Titulo: titulo, SubTitulo: subTitulo, Descricao: descricao, Situacao: situacao}
+	response := model.Atividade{Id: id, Titulo: titulo, SubTitulo: subTitulo, Descricao: descricao}
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -87,8 +86,8 @@ func PutAtualiza(c echo.Context) error {
 		return c.JSON(400, err)
 	}
 
-	sql := "UPDATE tb_atividades SET atividade_titulo = ?, atividade_subtitulo = ?, atividade_descricao = ?, atividade_situacao = ? WHERE id = ?"
-	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Situacao, strAtividade.Id)
+	sql := "UPDATE tb_atividades SET atividade_titulo = ?, atividade_subtitulo = ?, atividade_descricao = ? WHERE id = ?"
+	result, err := db.Exec(sql, strAtividade.Titulo, strAtividade.SubTitulo, strAtividade.Descricao, strAtividade.Id)
 	if err != nil {
 		fmt.Print(err.Error())
 		return c.JSON(400, err)

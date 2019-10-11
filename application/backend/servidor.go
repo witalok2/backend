@@ -29,7 +29,7 @@ func main() {
 	// Lista as atividades passado pelo ID
 	e.GET("/atividade/listar/:id", controller.GetListaParam)
 	// Atualiza Atividade
-	e.PUT("/atividade/atualizar/:id", controller.PutAtualiza)
+	e.PUT("/atividade/atualizar/", controller.PutAtualiza)
 	// Exluir Atividade
 	e.DELETE("/atividade/deletar/:id", controller.Delete)
 
