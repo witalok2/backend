@@ -1,11 +1,11 @@
 <template>
 <div>
-  <div id="text-painel">CRIAR ATIVIDADES</div>
+  <div id="text-painel">CRIAR ATIVIDADES</div> <!-- Titulo -->
   <form>
   <q-page padding>
-    <q-input v-model="atividade.titulo" label="Titulo" /><br>
-    <q-input v-model="atividade.subtitulo" label="SubTitulo" /><br>
-    <q-input v-model="atividade.descricao" filled type="textarea" label="Descrição"/>
+    <q-input v-model="atividade.titulo" label="Titulo" /><br> <!-- Input com o titulo da atividade -->
+    <q-input v-model="atividade.subtitulo" label="SubTitulo" /><br> <!-- input com o subtitulo da atividade -->
+    <q-input v-model="atividade.descricao" filled type="textarea" label="Descrição"/> <!-- Text area  -->
     <q-btn color="white" text-color="black" label="Criar"  v-on:click="salvar" />
   </q-page>
   </form>
@@ -42,7 +42,7 @@ export default {
           this.errors = e.response.data.errors
         })
       }, 
-      // Notificação de Sucesso na criação de Atividade
+    // Notificação de Sucesso na criação de Atividade
     createNotify() {
       this.$q.notify({
         message: 'Atividade Criada Com Sucesso.',
@@ -52,3 +52,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+#text-painel {
+  opacity: 0.5;
+  font-size: 30px;
+  text-align: center;
+}
+</style>

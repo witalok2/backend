@@ -9,7 +9,7 @@
             <div class="text-titulo">{{ atividade.titulo }}</div>
             <div class="text-subtitulo">{{ atividade.subtitulo }}</div>
             <div class="text-descricao">{{ atividade.descricao }}</div>
-            <div class="text-situacao"><q-btn @click="deletar(atividade.id)"  outline rounded color="red" label="Excluir" /></div>
+            <div class="text-situacao"><q-btn @click="deletar(atividade.id)"  outline rounded color="red" label="Excluir"/></div>
           </div>
         </div>
       </q-card-section>
@@ -59,13 +59,21 @@ export default {
       });
     },
 
-    deletar(id){
+    deletar(id) {
       Atividades.apagar(id).then(resposta => {
-          alert(id)
+          this.deleteNotify()
           this.listar()
         }).catch(e => {
           this.errors = e.response.data.errors
         })
+    },
+
+    // Notificação de Deletado a Atividade
+    deleteNotify() {
+      this.$q.notify({
+        message: 'Atividade Deletada Com Sucesso.',
+        color: 'red'
+      })  
     }
   }
 }
@@ -76,6 +84,11 @@ export default {
   background-color: rgb(107, 106, 106);
 }
 
+#text-painel {
+  opacity: 0.5;
+  font-size: 30px;
+}
+
 .my-card {
   width: 100%;
   max-width: 100%;
@@ -83,15 +96,18 @@ export default {
 }
 
 .text-titulo {
+  text-align: center;
   font-size: 40px;
   color: #028122;
 }
 
 .text-subtitulo {
+  text-align: center;
   font-size: 20px;
 }
 
 .text-descricao {
+  text-align: center;
   font-size: 10px;
 }
 
